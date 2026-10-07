@@ -2,13 +2,12 @@ import * as Device from 'expo-device';
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import React from 'react';
+import React, { useState } from 'react';
+import {InputText} from '@/components/text-imput';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -30,19 +29,27 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const [text, onChangeText] = useState('');
+  
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
+        <ThemedView style={styles.heroSection} darkColor='dark'>
           {/* <AnimatedIcon /> */}
-          <ThemedText type="title" style={styles.title}>
+          <ThemedText type="subtitle" style={styles.title}>
             Quanto Custa? 
           </ThemedText>
-          <ThemedText type="default" style={styles.code}>
+          <ThemedText type="code" style={styles.code}>
             Veja o preço dos seus hábitos
           </ThemedText>
+          
         </ThemedView>
-
+        <ThemedView style={styles.heroSection} darkColor='dark'>
+          <ThemedText type="code" style={styles.code}>
+            Quanto você gasta?
+          </ThemedText>
+          <InputText textImput={text} onChange={onChangeText}/>
+        </ThemedView>
         {/* <ThemedText type="default" style={styles.code}>
           get started
         </ThemedText>
@@ -74,17 +81,16 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     paddingHorizontal: Spacing.four,
-    alignItems: 'center',
+    // alignItems: 'center',
     gap: Spacing.three,
     paddingBottom: BottomTabInset + Spacing.three,
     maxWidth: MaxContentWidth,
   },
   heroSection: {
     alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
     paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+    paddingTop: Spacing.six,
+    gap: Spacing.three,
   },
   title: {
     textAlign: 'center',
