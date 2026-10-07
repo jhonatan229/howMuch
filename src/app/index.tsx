@@ -8,6 +8,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import React from 'react';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -33,17 +34,20 @@ export default function HomeScreen() {
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
+          {/* <AnimatedIcon /> */}
           <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
+            Quanto Custa? 
+          </ThemedText>
+          <ThemedText type="default" style={styles.code}>
+            Veja o preço dos seus hábitos
           </ThemedText>
         </ThemedView>
 
-        <ThemedText type="code" style={styles.code}>
+        {/* <ThemedText type="default" style={styles.code}>
           get started
         </ThemedText>
 
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
+        <ThemedView type="backgroundSelected" style={styles.stepContainer}>
           <HintRow
             title="Try editing"
             hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
@@ -53,7 +57,7 @@ export default function HomeScreen() {
             title="Fresh start"
             hint={<ThemedText type="code">npm run reset-project</ThemedText>}
           />
-        </ThemedView>
+        </ThemedView> */}
 
         {Platform.OS === 'web' && <WebBadge />}
       </SafeAreaView>
